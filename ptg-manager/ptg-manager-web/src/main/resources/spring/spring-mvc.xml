@@ -21,7 +21,7 @@
     <!--<mvc:default-servlet-handler/>-->
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
@@ -44,11 +44,8 @@
     <!--一旦在这里配置了，访问http://localhost:8080/ttshop/js/test.js请求时，就不会经过action-->
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/skin/**" location="/skin/"/>
+    <mvc:resources mapping="/font/**" location="/font/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>
-    <mvc:resources mapping="/components/**" location="/components/"/>
-    <mvc:resources mapping="/make/**" location="/make/"/>
-    <mvc:resources mapping="/ufiles/**" location="/ufiles/"/>
-    <mvc:resources mapping="/home/**" location="/home/"/>
-    <mvc:resources mapping="/validator/**" location="/validator/"/>
+
+
 </beans>

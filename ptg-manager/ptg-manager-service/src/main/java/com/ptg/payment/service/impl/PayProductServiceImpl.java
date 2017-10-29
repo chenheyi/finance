@@ -10,7 +10,9 @@ import com.ptg.payment.pojo.vo.PayProductQuery;
 import com.ptg.payment.service.PayProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.beans.Transient;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +61,8 @@ public class PayProductServiceImpl implements PayProductService {
         return payDao.updateByExampleSelective(product, example);
     }
 
+
+
     @Override
     public int upProductStatusByIds(List<String> ids) {
         RpPayProduct product = new RpPayProduct();
@@ -70,4 +74,14 @@ public class PayProductServiceImpl implements PayProductService {
         //真正的执行查询
         return payDao.updateByExampleSelective(product, example);
     }
+
+    @Transactional
+    @Override
+    public int savePayProduct(RpPayProduct product) {
+
+        return payDao.insert(product);
+
+    }
+
+
 }

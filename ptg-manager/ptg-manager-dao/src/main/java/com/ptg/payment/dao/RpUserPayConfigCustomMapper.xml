@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ptg.payment.dao.RpUserPayConfigCustomMapper" >
+
+    <sql id="Base_Column_List" >
+        c.id,c.create_time as createTime,c.edit_time as editTime,c.version,c.remark,c.status,c.audit_status as auditStatus,c.is_auto_sett as isAutoSett,c.product_code as productCode,c.product_name as productName,c.user_no as userNo,
+        c.user_name as userName,c.risk_day as riskDay,c.pay_key as payKey,c.fund_into_type as fundIntoType,c.pay_secret as paySecret,c.security_rating as securityRating,c.merchant_server_ip as merchantServerIp,p.status
+    </sql>
+
+    <sql id="Where_Clause">
+        <where>
+            p.status='是'
+            <if test="query != null and query.title != null and query.title != '' ">
+               and  c.product_name like '%${query.title}%'
+            </if>
+
+            <if test="query != null and query.userName != null and query.userName != '' ">
+              and  c.user_name like '%${query.userName}%'
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="payListConfigs"  resultType="com.ptg.payment.pojo.po.RpUserPayConfig">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM rp_user_pay_config c
+        LEFT JOIN rp_pay_product p
+        ON c.product_code=p.product_code
+        <include refid="Where_Clause" />
+        ORDER BY c.id
+        limit #{page.offset},#{page.rows}
+    </select>
+
+    <select id="countPayConfigs" resultType="long">
+        select
+        count(*)
+        from rp_user_pay_config c
+        LEFT JOIN rp_pay_product p
+        ON c.product_code=p.product_code
+        <include refid="Where_Clause" />
+    </select>
+
+</mapper>

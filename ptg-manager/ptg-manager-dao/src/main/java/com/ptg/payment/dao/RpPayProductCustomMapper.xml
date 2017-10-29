@@ -8,8 +8,8 @@
 
     <sql id="Where_Clause">
         <where>
-            <if test="query != null and query.title != null and query.title != '' ">
-                p.product_name like '%${query.title}%'
+            <if test="query != null and query.productName != null and query.productName != '' ">
+                p.product_name like '%${query.productName}%'
             </if>
 
         </where>

@@ -9,13 +9,13 @@ package com.ptg.payment.pojo.vo;
  */
 public class PayProductQuery {
 
-    private String title;
+    private String productName;
 
-    public String getTitle() {
-        return title;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

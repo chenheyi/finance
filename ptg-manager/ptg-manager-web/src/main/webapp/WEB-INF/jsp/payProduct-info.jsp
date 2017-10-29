@@ -5,12 +5,12 @@
 <div id="toolbar">
     <div style="padding: 5px; background-color: #fff;">
         <label>支付产品名称：</label>
-        <input class="easyui-textbox" type="text" id="title">
-        <button onclick="searchForm()" type="button" class="easyui-linkbutton">查询</button>
+        <input class="easyui-textbox" type="text" id="title1">
+        <button onclick="searchForm1()" type="button" class="easyui-linkbutton">查询</button>
     </div>
 
     <div>
-        <button onclick="add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加支付产品</button>
+        <button onclick="add()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</button>
         <%--<button onclick="edit()" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</button>--%>
         <button onclick="down()" class="easyui-linkbutton" data-options="iconCls:'icon-down',plain:true">下架</button>
         <button onclick="up()" class="easyui-linkbutton" data-options="iconCls:'icon-up',plain:true">上架</button>
@@ -24,15 +24,15 @@
 
 
 <script>
-    function searchForm(){
+    function searchForm1(){
         $('#dg').datagrid('load',{
-            title: $('#title').val()
+            productName: $('#title1').val()
         });
     }
 
 
     function  add() {
-        ttshop.addTabs('新增商品','item-add');
+        ttshop.addTabs('添加支付产品','addPayProduct');
     }
 
 
@@ -119,12 +119,7 @@
             {field:'status',title:'是否上架',width:200},
             {field:'createTime',title:'创建时间',formatter:function(value,row,index){
                 return moment(value).format('dddd, MMMM Do YYYY, h:mm:ss a');
-            }},
-
-           { field: 'operation', title: '操作', width: 600, formatter: function (value, rowData, rowIndex) {
-                return "<a href='pay_way'>查看支付方式</a>";
             }}
         ]]
     });
-
 </script>

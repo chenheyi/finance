@@ -43,7 +43,7 @@
         <div title="支付管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
                 <li data-options="attributes:{'href':'payProduct-info'}">支付产品信息</li>
-                <li data-options="attributes:{'href':'userPay-config'}">用户支付配置</li>
+                <li data-options="attributes:{'href':'userPayConfig'}">用户支付配置</li>
             </ul>
         </div>
 
@@ -60,13 +60,6 @@
             </ul>
         </div>
 
-        <div title="对账管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
-            <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'index-item'}">对账差错列表</li>
-                <li data-options="attributes:{'href':'index-item'}">对账批次列表</li>
-                <li data-options="attributes:{'href':'index-item'}">对账缓冲池列表列表</li>
-            </ul>
-        </div>
     </div>
 </div>
 <div data-options="region:'center'" style="background:#eee;">

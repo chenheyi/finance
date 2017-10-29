@@ -21,4 +21,6 @@ public interface PayProductService {
     int upProductStatusByIds  (List<String> ids);
 
     int downProductStatusByIds  (List<String> ids);
+
+    int savePayProduct(RpPayProduct product);
 }

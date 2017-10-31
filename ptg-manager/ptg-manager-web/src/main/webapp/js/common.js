@@ -15,7 +15,9 @@ var ttshop = {
     //添加选项卡事件
     addTabs:function(text,href){
         if ($('#tab').tabs('exists',text)){
-            $('#tab').tabs('select',text)
+            $('#tab').tabs('select',text);
+            var tab = $('#tab').tabs('getSelected');  // 获取选择的面板
+            tab.panel('refresh', href);
         }else{
             $('#tab').tabs('add',{
                 //选项卡的标题

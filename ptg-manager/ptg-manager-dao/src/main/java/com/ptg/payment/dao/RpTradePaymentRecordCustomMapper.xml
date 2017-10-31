@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ptg.payment.dao.RpTradePaymentRecordCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.ptg.payment.pojo.po.RpTradePaymentRecord" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+    <result column="trx_no" property="trxNo" jdbcType="VARCHAR" />
+    <result column="bank_order_no" property="bankOrderNo" jdbcType="VARCHAR" />
+    <result column="bank_trx_no" property="bankTrxNo" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="payer_user_no" property="payerUserNo" jdbcType="VARCHAR" />
+    <result column="payer_name" property="payerName" jdbcType="VARCHAR" />
+    <result column="payer_pay_amount" property="payerPayAmount" jdbcType="DECIMAL" />
+    <result column="payer_fee" property="payerFee" jdbcType="DECIMAL" />
+    <result column="payer_account_type" property="payerAccountType" jdbcType="VARCHAR" />
+    <result column="receiver_user_no" property="receiverUserNo" jdbcType="VARCHAR" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_pay_amount" property="receiverPayAmount" jdbcType="DECIMAL" />
+    <result column="receiver_fee" property="receiverFee" jdbcType="DECIMAL" />
+    <result column="receiver_account_type" property="receiverAccountType" jdbcType="VARCHAR" />
+    <result column="order_ip" property="orderIp" jdbcType="VARCHAR" />
+    <result column="order_referer_url" property="orderRefererUrl" jdbcType="VARCHAR" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="plat_income" property="platIncome" jdbcType="DECIMAL" />
+    <result column="fee_rate" property="feeRate" jdbcType="DECIMAL" />
+    <result column="plat_cost" property="platCost" jdbcType="DECIMAL" />
+    <result column="plat_profit" property="platProfit" jdbcType="DECIMAL" />
+    <result column="return_url" property="returnUrl" jdbcType="VARCHAR" />
+    <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
+    <result column="pay_way_code" property="payWayCode" jdbcType="VARCHAR" />
+    <result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
+    <result column="pay_success_time" property="paySuccessTime" jdbcType="TIMESTAMP" />
+    <result column="complete_time" property="completeTime" jdbcType="TIMESTAMP" />
+    <result column="is_refund" property="isRefund" jdbcType="VARCHAR" />
+    <result column="refund_times" property="refundTimes" jdbcType="INTEGER" />
+    <result column="success_refund_amount" property="successRefundAmount" jdbcType="DECIMAL" />
+    <result column="trx_type" property="trxType" jdbcType="VARCHAR" />
+    <result column="order_from" property="orderFrom" jdbcType="VARCHAR" />
+    <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR" />
+    <result column="pay_type_name" property="payTypeName" jdbcType="VARCHAR" />
+    <result column="fund_into_type" property="fundIntoType" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="field4" property="field4" jdbcType="VARCHAR" />
+    <result column="field5" property="field5" jdbcType="VARCHAR" />
+    <result column="bank_return_msg" property="bankReturnMsg" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, version, create_time, status, editor, creater, edit_time, product_name, merchant_order_no, 
+    trx_no, bank_order_no, bank_trx_no, merchant_name, merchant_no, payer_user_no, payer_name, 
+    payer_pay_amount, payer_fee, payer_account_type, receiver_user_no, receiver_name, 
+    receiver_pay_amount, receiver_fee, receiver_account_type, order_ip, order_referer_url, 
+    order_amount, plat_income, fee_rate, plat_cost, plat_profit, return_url, notify_url, 
+    pay_way_code, pay_way_name, pay_success_time, complete_time, is_refund, refund_times, 
+    success_refund_amount, trx_type, order_from, pay_type_code, pay_type_name, fund_into_type, 
+    remark, field1, field2, field3, field4, field5, bank_return_msg
+  </sql>
+
+  <sql id="Where_Clause">
+    <where>
+      <if test="query != null and query.merchantNo != null and query.merchantNo != ''">
+        and merchant_no like '%${query.merchantNo}%'
+      </if>
+      <if test="query != null and query.merchantName != null and query.merchantName != ''">
+        and merchant_name like '%${query.merchantName}%'
+      </if>
+      <if test="query != null and query.merchantOrderNo != null and query.merchantOrderNo != ''">
+        and merchant_order_no like '%${query.merchantOrderNo}%'
+      </if>
+      <!--<if test="query != null and query.orderDate != null and query.orderDate != ''">
+            and order_date = #{query.orderDate}
+          </if>-->
+      <!-- <if test="query != null and query.expireTime != null and query.expireTime != ''">
+        and expire_time = #{query.expireTime}
+      </if>-->
+      <if test="query != null and query.payWayName != null and query.payWayName != 0">
+        and pay_way_name = #{query.payWayName}
+      </if>
+      <if test="query != null and query.payTypeName != null and query.payTypeName != 0">
+        and pay_type_name = #{query.payTypeName}
+      </if>
+      <if test="query != null and query.fundIntoType != null and query.fundIntoType != 0">
+        and fund_into_type = #{query.fundIntoType}
+      </if>
+      <if test="query != null and query.status != null and query.status != 0">
+        and status = #{query.status}
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectRecordCount" resultType="long" >
+    select
+    count(*)
+    from rp_trade_payment_record
+    <include refid="Where_Clause" />
+  </select>
+
+  <select id="selectRecordByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from rp_trade_payment_record
+    <include refid="Where_Clause" />
+    <choose>
+      <when test="order != null and order.sort != null and order.order != null">
+        <foreach collection="order.orderParams" item="item" open="order by" close="" separator=",">
+          ${item}
+        </foreach>
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+    limit #{page.offset},#{page.rows}
+  </select>
+</mapper>

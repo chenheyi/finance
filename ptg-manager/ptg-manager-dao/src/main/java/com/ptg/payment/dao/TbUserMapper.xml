@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ptg.payment.dao.TbUserMapper">
+    <resultMap id="BaseResultMap" type="com.ptg.payment.pojo.vo.TbUserCustom" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="pay_pwd" property="payPwd" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    i.id, i.create_time ,
+    i.user_no , i.user_name , i.account_no , i.mobile, i.status, i.password,
+     i.pay_pwd ,
+    c.account_no as acctno
+  </sql>
+
+    <sql id="Where_Clause">
+        <where>
+
+            <if test="query != null and query.title != null and query.title != '' ">
+                and i.user_name like '%${query.title}%'
+            </if>
+
+        </where>
+    </sql>
+
+
+    <select id="listItemsByPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM rp_user_info i
+        LEFT JOIN rp_account c
+        ON i.id=c.id
+        <include refid="Where_Clause"/>
+
+        ORDER BY i.id DESC
+
+        limit #{page.offset},#{page.rows}
+    </select>
+
+    <select id="countItems" resultType="long">
+        SELECT
+        COUNT(*)
+        FROM rp_user_info i
+        ORDER BY id DESC
+    </select>
+    <insert id="insert" parameterType="com.ptg.payment.pojo.po.RpUserInfo" >
+        insert into rp_user_info(id,user_no, user_name,account_no,mobile,password,pay_pwd,create_time,status)
+        values (
+        #{id,jdbcType=VARCHAR},
+         #{userNo,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{accountNo,jdbcType=VARCHAR},
+       #{mobile,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{payPwd,jdbcType=VARCHAR},
+       #{createTime,jdbcType=TIMESTAMP},#{status,jdbcType=VARCHAR})
+    </insert>
+</mapper>

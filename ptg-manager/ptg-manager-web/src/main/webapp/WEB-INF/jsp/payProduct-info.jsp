@@ -33,6 +33,7 @@
 
     function  add() {
         ttshop.addTabs('添加支付产品','addPayProduct');
+
     }
 
 

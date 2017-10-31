@@ -57,26 +57,6 @@
 </div>
 
 
-   /* //初始化树形下拉框
-    $('#cid').combotree({
-        url: 'itemCats?parentId=0',
-        required: true,
-        onBeforeExpand:function(node){
-            //首先获取combotree组件中的树，再获取到树中选项
-            var options = $('#cid').combotree('tree').tree('options');
-            //通过修改url用来点击
-            options.url = 'itemCats?parentId=' + node.id;
-        },
-        onBeforeSelect:function(node){
-            //如果是最终的类别返回true，否则返回false
-            var isLeaf = $('#cid').tree('isLeaf',node.target);
-            if(!isLeaf){
-                $.messager.alert('警告','没有选中最终类目','warning');
-                return false;
-            }
-
-        }
-    });*/
 
 <script>
     //用来提交表单的操作

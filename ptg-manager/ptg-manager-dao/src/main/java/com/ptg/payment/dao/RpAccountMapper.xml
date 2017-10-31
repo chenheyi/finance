@@ -114,7 +114,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ptg.payment.pojo.po.RpAccount" >
-    insert into rp_account (id, create_time, edit_time, 
+    insert into rp_account (id, create_time,edit_time,
       version, remark, account_no, 
       balance, unbalance, security_money, 
       status, total_income, total_expend, 

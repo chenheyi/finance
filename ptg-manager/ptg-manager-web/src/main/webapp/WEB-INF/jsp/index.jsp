@@ -19,24 +19,24 @@
 </div>
 <div data-options="region:'west'" style="width:200px;">
     <div id="menu" class="easyui-accordion">
-        <div title="权限管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
+       <%-- <div title="权限管理" data-options="selected:true,iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
                 <li data-options="attributes:{'href':'item-add'}">菜单管理</li>
                 <li data-options="attributes:{'href':'item-list'}">权限管理</li>
                 <li data-options="attributes:{'href':'item-param-list'}">角色管理</li>
                 <li data-options="attributes:{'href':'#'}">操作员管理</li>
             </ul>
-        </div>
+        </div>--%>
         <div title="账户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'content-category'}">账户信息</li>
-                <li data-options="attributes:{'href':'content'}">账户历史信息</li>
+                <li data-options="attributes:{'href':'account-info'}">账户信息</li>
+                <li data-options="attributes:{'href':'account-history'}">账户历史信息</li>
             </ul>
         </div>
 
         <div title="用户管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'index-item'}">用户信息</li>
+                <li data-options="attributes:{'href':'user-info'}">用户信息</li>
             </ul>
         </div>
 
@@ -49,14 +49,14 @@
 
         <div title="交易管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'index-item'}">支付订单管理</li>
-                <li data-options="attributes:{'href':'index-item'}">支付记录管理</li>
+                <li data-options="attributes:{'href':'payment-order-management'}">支付订单管理</li>
+                <li data-options="attributes:{'href':'payment-record-management'}">支付记录管理</li>
             </ul>
         </div>
 
         <div title="结算管理" data-options="iconCls:'icon-tip'" style="padding:10px 0;">
             <ul class="easyui-tree">
-                <li data-options="attributes:{'href':'index-item'}">结算记录管理</li>
+                <li data-options="attributes:{'href':'clear-record'}">结算记录管理</li>
             </ul>
         </div>
 

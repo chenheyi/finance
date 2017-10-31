@@ -95,7 +95,6 @@
                 data: jsonstr,
                 dataType: "text",
                 success: function (rec) {
-                    alert(rec);
                     if (rec == 1) {
                         $("#sp1").html("用户名或密码错误");
                     } else {

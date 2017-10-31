@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ptg.payment.dao.RpTradePaymentOrderCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.ptg.payment.pojo.po.RpTradePaymentOrder" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="order_from" property="orderFrom" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="order_date" property="orderDate" jdbcType="DATE" />
+    <result column="order_ip" property="orderIp" jdbcType="VARCHAR" />
+    <result column="order_referer_url" property="orderRefererUrl" jdbcType="VARCHAR" />
+    <result column="return_url" property="returnUrl" jdbcType="VARCHAR" />
+    <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR" />
+    <result column="order_period" property="orderPeriod" jdbcType="SMALLINT" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+    <result column="pay_way_code" property="payWayCode" jdbcType="VARCHAR" />
+    <result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="trx_type" property="trxType" jdbcType="VARCHAR" />
+    <result column="trx_no" property="trxNo" jdbcType="VARCHAR" />
+    <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR" />
+    <result column="pay_type_name" property="payTypeName" jdbcType="VARCHAR" />
+    <result column="fund_into_type" property="fundIntoType" jdbcType="VARCHAR" />
+    <result column="is_refund" property="isRefund" jdbcType="VARCHAR" />
+    <result column="refund_times" property="refundTimes" jdbcType="INTEGER" />
+    <result column="success_refund_amount" property="successRefundAmount" jdbcType="DECIMAL" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="field4" property="field4" jdbcType="VARCHAR" />
+    <result column="field5" property="field5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List1" >
+    id, version, create_time, editor, creater, edit_time, status, product_name, merchant_order_no,
+    order_amount, order_from, merchant_name, merchant_no, order_time, order_date, order_ip,
+    order_referer_url, return_url, notify_url, cancel_reason, order_period, expire_time,
+    pay_way_code, pay_way_name, remark, trx_type, trx_no, pay_type_code, pay_type_name,
+    fund_into_type, is_refund, refund_times, success_refund_amount, field1, field2, field3,
+    field4, field5
+  </sql>
+  <sql id="Base_Column_List" >
+    id, version, create_time as createTime, editor, creater, edit_time as editTime, status, product_name as productName, merchant_order_no as merchantOrderNo,
+    order_amount as orderAmount, order_from as orderFrom, merchant_name as merchantName, merchant_no as merchantNo, order_time as orderTime, order_date as orderDate, order_ip as orderIp,
+    order_referer_url as orderRefererUrl, return_url as returnUrl, notify_url as notifyUrl, cancel_reason as cancelReason, order_period as orderPeriod, expire_time as expireTime,
+    pay_way_code as payWayCode, pay_way_name as payWayName, remark, trx_type as trxType, trx_no as trxNo, pay_type_code as payTypeCode, pay_type_name as payTypeName,
+    fund_into_type as fundIntoType, is_refund as isRefund, refund_times as refundTimes, success_refund_amount as successRefundAmount, field1, field2, field3,
+    field4, field5
+  </sql>
+  <sql id="Where_Clause">
+    <where>
+
+      <if test="query != null and query.merchantNo != null and query.merchantNo != ''">
+        and merchant_no like '%${query.merchantNo}%'
+      </if>
+      <if test="query != null and query.merchantName != null and query.merchantName != ''">
+        and merchant_name like '%${query.merchantName}%'
+      </if>
+      <if test="query != null and query.merchantOrderNo != null and query.merchantOrderNo != ''">
+        and merchant_order_no like '%${query.merchantOrderNo}%'
+      </if>
+   <!--<if test="query != null and query.orderDate != null and query.orderDate != ''">
+         and order_date = #{query.orderDate}
+       </if>-->
+      <!-- <if test="query != null and query.expireTime != null and query.expireTime != ''">
+        and expire_time = #{query.expireTime}
+      </if>-->
+       <if test="query != null and query.payWayName != null and query.payWayName != 0">
+         and pay_way_name = #{query.payWayName}
+       </if>
+         <if test="query != null and query.payTypeName != null and query.payTypeName != 0">
+          and pay_type_name = #{query.payTypeName}
+        </if>
+        <if test="query != null and query.fundIntoType != null and query.fundIntoType != 0">
+          and fund_into_type = #{query.fundIntoType}
+        </if>
+        <if test="query != null and query.status != null and query.status != 0">
+          and status = #{query.status}
+        </if>
+    </where>
+  </sql>
+  <select id="selectOrderCount" resultType="long" >
+    select
+    count(*)
+    from rp_trade_payment_order
+    <include refid="Where_Clause" />
+  </select>
+  <select id="selectOrderByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List1" />
+    from rp_trade_payment_order
+    <include refid="Where_Clause" />
+    <choose>
+      <when test="order != null and order.sort != null and order.order != null">
+        <foreach collection="order.orderParams" item="item" open="order by" close="" separator=",">
+          ${item}
+        </foreach>
+      </when>
+      <otherwise>
+        ORDER BY id DESC
+      </otherwise>
+    </choose>
+    limit #{page.offset},#{page.rows}
+  </select>
+</mapper>
